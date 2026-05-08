@@ -1,0 +1,97 @@
+/* 1. General Reset */
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    /* This prevents scrolling entirely */
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. Mobile View Only */
+@media (max-width: 767px) {
+    body {
+        background-color: #1a0b41;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Aligns content from the top */
+        position: relative;
+    }
+
+    /* THE SWOOSH: Stays fixed in the background */
+    .background-swoosh {
+        position: absolute; /* absolute inside a fixed height body works like fixed */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 54vh; 
+        z-index: 0; 
+        line-height: 0;
+        pointer-events: none;
+    }
+
+    .background-swoosh svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* THE CONTENT: No longer needs massive bottom padding because scrolling is disabled */
+    .mobile-container {
+        position: relative;
+        z-index: 10; 
+        width: 100%;
+        height: 100vh; /* Fill the whole screen */
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around; /* Distributes items evenly without scrolling */
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin: 5px 0;
+        letter-spacing: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .user-info p {
+        font-size: 1.3rem;
+        margin: 5px 0;
+        font-weight: 200;
+    }
+
+    .status {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    /* THE POSTER: Adjusted to fit within the fixed screen height */
+    .poster-container {
+        width: 90%;
+        max-width: 300px;
+        margin: 0 auto;
+        overflow: hidden;
+        z-index: 11;
+    }
+
+    .poster-container img {
+        width: 100%;
+        height: auto;
+        max-height: 40vh; /* Limits image height to ensure it fits on screen */
+        display: block;
+        border-radius: 8px;
+        object-fit: contain;
+    }
+}
